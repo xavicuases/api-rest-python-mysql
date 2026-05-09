@@ -1,4 +1,4 @@
-# 🚀 Personal API Rest - Python & MySQL
+# 🚀 API Rest - Python & MySQL
 
 Este proyecto es una API REST profesional construida con **Python** y **Flask**. Está diseñada para ser escalable, utilizando **MySQL** como motor de base de datos y siguiendo las mejores prácticas de desarrollo.
 
