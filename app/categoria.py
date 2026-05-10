@@ -24,9 +24,10 @@ with app.app_context():
     db.create_all()   
 
 #Esquema Categoria
-class CategoriaSchema(ma.Schema):
+class CategoriaSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
-        fielts = ('cat_id','cat_nom','cat_desp')
+        model = Categoria
+        fields = ('cat_id','cat_nom','cat_desp')
 
 #Una sola respuesta
 categoria_schema = CategoriaSchema()
