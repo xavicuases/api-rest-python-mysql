@@ -41,6 +41,14 @@ def get_categorias():
     result = categorias_schema.dump(all_categorias)
     return jsonify(result)
 
+
+## GET POR ID ###########
+@app.route('/categoria/<id>', methods=['GET'])
+def get_categoria_x_id(id):
+    una_categoria = Categoria.query.get(id)
+    return categoria_schema.jsonify(una_categoria)
+
+
 #Mensaje de bienvenida
 @app.route('/',methods=['GET'])
 def index():
