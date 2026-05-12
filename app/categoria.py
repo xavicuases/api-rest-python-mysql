@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 
@@ -47,6 +47,19 @@ def get_categorias():
 def get_categoria_x_id(id):
     una_categoria = Categoria.query.get(id)
     return categoria_schema.jsonify(una_categoria)
+
+#POST########################
+@app.route('/categoria', methods=['POST'])
+def insert_categoria():
+    data = request.get_json(force=True)
+    cat_nom = data['cat_nom']
+    cat_desp = data['cat_desp']
+
+    nuevocategoria = Categoria(cat_nom, cat_desp)
+
+    db.session.add(nuevocategoria)
+    db.session.commit()
+    return categoria_schema.jsonify(nuevocategoria)
 
 
 #Mensaje de bienvenida
