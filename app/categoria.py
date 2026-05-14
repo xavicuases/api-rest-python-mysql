@@ -76,7 +76,19 @@ def update_categoria(id):
     db.session.commit()
     return categoria_schema.jsonify(actualizarcategoria)
 
+# DELETE ##################
+@app.route('/categoria/<int:id>', methods=['DELETE'])
+def delete_categoria(id):
+    
+    eliminarcategoria = db.session.get(Categoria, id)
+    
+    if not eliminarcategoria:
+        return jsonify({"Mensaje": "La categoría no existe"}), 404
 
+    db.session.delete(eliminarcategoria)
+    db.session.commit()
+    
+    return categoria_schema.jsonify(eliminarcategoria)
 #Mensaje de bienvenida
 @app.route('/',methods=['GET'])
 def index():
