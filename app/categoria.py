@@ -61,6 +61,21 @@ def insert_categoria():
     db.session.commit()
     return categoria_schema.jsonify(nuevocategoria)
 
+#PUT ######################
+@app.route('/categoria/<id>',methods=['PUT'])
+def update_categoria(id):
+    actualizarcategoria = db.session.get(Categoria, id)
+
+    data = request.get_json(force=True)
+    cat_nom = data['cat_nom']
+    cat_desp = data['cat_desp']
+
+    actualizarcategoria.cat_nom = cat_nom
+    actualizarcategoria.cat_desp = cat_desp
+
+    db.session.commit()
+    return categoria_schema.jsonify(actualizarcategoria)
+
 
 #Mensaje de bienvenida
 @app.route('/',methods=['GET'])
