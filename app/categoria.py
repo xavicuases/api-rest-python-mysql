@@ -59,7 +59,7 @@ def insert_categoria():
 
     db.session.add(nuevocategoria)
     db.session.commit()
-    return categoria_schema.jsonify(nuevocategoria)
+    return categoria_schema.jsonify(nuevocategoria), 201
 
 #PUT ######################
 @app.route('/categoria/<id>',methods=['PUT'])
